@@ -1,0 +1,43 @@
+
+
+Hi,
+
+Thanks for taking time to do this challenge as part of interviewing for the role at Glasscubes. 
+We'd like to get a feel on how you write your code and how you approach your development. 
+We don't want to put you under pressure in an online coding interview as thats not how we or you program in the real world,
+so we think its unfair to interview you like that. In the real world we use Google to remember Javadocs to and remind yourself what something is called or works. 
+
+We'd like you to spend 1.5hrs developing a feature with the following requirement:
+
+The user is presented with a web page, that enables them to run a report. This report will count the top 'X' words 
+occurrences found within a set of 'N' files. X is a number inputed by the user on the webpage. 
+'N' files is an unknown number of files that reside on the server with a fixed path somewhere on the server. 
+The user needs to know the top occurrences of words found in each file (in order), and a summary of top word occurrences across all files.
+The size of the files and number of files maybe too large to load into memory.
+
+
+
+You are free to implement however you see fit. We only ask the following requirements:
+ - the web page is presented in a user friendly manner and style to the user.
+ - the request and results are rendered via JQuery calling an API
+ - the results are calculated in the most efficient way you can devise.
+ 
+
+After 1.5hrs we'd like you to send over the code for review.  If you think of shortfalls of your code that you simply
+do not have the time to address thats ok, just make a note on them and we can discuss.
+
+To get you started we have created this basic maven project running on JDK 11:
+
+src/main/resources/public contains the html, css and JS
+src/main/java/com/glasscubes/finder/APIEndpint.java contains a simple REST endpoint that is called from the the JS 
+within index.html
+
+To launch the application run src/main/java/com/glasscubes/finder/FinderApplication.java and navigate your browser to localhost:8080
+
+
+
+
+
+
+
+ 
