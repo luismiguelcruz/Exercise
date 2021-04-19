@@ -5,26 +5,21 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ReadFileServiceImpl implements ReadFileService {
-    private static final Properties APPLICATION_PROPERTIES = new Properties();
-    private static final String RESOURCES_RELATIVE_PATH = "src/main/resources/";
-    private final File folder = new File("D:/files");
+    private static final String RESOURCES_RELATIVE_PATH = "./src/main/resources/files";
 
     @Override
     public Map<String, Integer> readFiles(final String folderName) {
-        final File[] listOfFiles = folder.listFiles();
-        folder.list();
+        final File[] listOfFiles = new File(RESOURCES_RELATIVE_PATH).listFiles();
         Map wordsMap = new HashMap();
-
-        wordsMap = readFile(null, wordsMap);
 
         for (File file : listOfFiles) {
             if (file.isFile()) {
@@ -36,9 +31,7 @@ public class ReadFileServiceImpl implements ReadFileService {
     }
 
     private Map<String, Integer> readFile(File file, Map<String, Integer> wordsMap) {
-        final String relativePath = "src/main/resources/files/file1.txt";
-
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(relativePath))) {
+        try (BufferedReader br = Files.newBufferedReader(file.getAbsoluteFile().toPath())) {
             String line;
             while ((line = br.readLine()) != null) {
                 final List<String> rawRead = new ArrayList<>();
@@ -61,6 +54,7 @@ public class ReadFileServiceImpl implements ReadFileService {
     }
 
     private List<String> removeSpecialCharacters(final List<String> inputString) {
-        return inputString;
+        return inputString.stream().map(s -> s.replaceAll("\\W", ""))
+                .collect(Collectors.toList());
     }
 }

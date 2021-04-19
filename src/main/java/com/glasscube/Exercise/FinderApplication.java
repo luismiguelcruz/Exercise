@@ -9,10 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FinderApplication {
 
 	public static void main(String[] args) {
-		final ReadFileService service = new ReadFileServiceImpl();
-		service.readFiles("files");
-
-		//SpringApplication.run(FinderApplication.class, args);
+		/*final ReadFileService service = new ReadFileServiceImpl();
+		service.readFiles("files");*/
+		SpringApplication.run(FinderApplication.class, args);
 	}
 
 }
